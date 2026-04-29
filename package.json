@@ -1,0 +1,47 @@
+{
+  "name": "@poly-unified/sdk",
+  "version": "0.1.0",
+  "description": "Unified TypeScript SDK prototype for the Polymarket fetch-quote-place-positions journey.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "readme.md",
+    "docs/design.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "smoke": "tsx --env-file-if-exists=.env scripts/smoke.ts",
+    "example:quote": "tsx --env-file-if-exists=.env examples/quote.ts",
+    "example:dry-run": "tsx --env-file-if-exists=.env examples/dry-run.ts",
+    "example:place": "tsx --env-file-if-exists=.env examples/place-order.ts",
+    "diag:funder": "node tools/check-funder.mjs",
+    "diag:owner": "node --env-file-if-exists=.env tools/check-owner.mjs",
+    "diag:creds": "node --env-file-if-exists=.env tools/derive-creds.mjs",
+    "diag:markets": "node tools/list-event-markets.mjs",
+    "diag:subclients": "tsx --env-file-if-exists=.env tools/test-subclients.ts"
+  },
+  "dependencies": {
+    "@polymarket/clob-client-v2": "^1.0.2",
+    "viem": "^2.48.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.6.3",
+    "vitest": "^4.1.5"
+  }
+}
